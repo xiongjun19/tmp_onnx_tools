@@ -20,7 +20,8 @@ def test(model_name, onnx_dir, seq_len=None):
    org_model = GPT2Model.from_pretrained(model_name)
    model = ModelWrap(org_model)
    os.makedirs(onnx_dir, exist_ok=True)
-   model_path = f'{onnx_dir}/{model_name}_pretrained.onnx'
+   out_model_name = os.path.basename(model_name)
+   model_path = f'{onnx_dir}/{out_model_name}_pretrained.onnx'
 
    dyn_state = False
    if seq_len is None:
